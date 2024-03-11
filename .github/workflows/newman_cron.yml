@@ -1,0 +1,25 @@
+name: Scheduled Postman Collection Run
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Schedule to run daily at midnight (UTC)
+
+jobs:
+  postman_collection:
+    name: Run Postman Collection
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16' # Change this to your preferred Node.js version
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Postman Collection
+        run: newman run "Mocking with fruits.postman_collection.json"
