@@ -1,4 +1,4 @@
-name: Run Postman Collection
+name: Manual Postman Collection Run
 
 on:
   push:
