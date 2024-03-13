@@ -23,4 +23,4 @@ jobs:
         run: npm install -g newman
 
       - name: Run Postman Collection
-        run: newman run "Mocking with fruits.postman_collection.json, Functional Testing and Automation.postman_collection.json"
+        run: newman run "Mocking with fruits.postman_collection.json" "Functional Testing and Automation.postman_collection.json"
