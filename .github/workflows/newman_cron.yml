@@ -2,7 +2,7 @@ name: Scheduled Postman Collection Run
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Schedule to run daily at midnight (UTC)
+    - cron: '0/10 * * * *'  # Schedule to run daily at midnight (UTC)
 
 jobs:
   collection_1:
