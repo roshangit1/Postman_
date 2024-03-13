@@ -27,6 +27,6 @@ jobs:
         run: npm install -g newman
 
       - name: Run Collection 2
-        run: newman run "Functional Testing and Automation.postman_collection"
+        run: newman run "Functional Testing and Automation.postman_collection.json"
 
   # Add more jobs for additional collections as needed
