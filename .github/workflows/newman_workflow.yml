@@ -1,26 +1,33 @@
-name: Manual Postman Collection Run
+name: Postman Collection Runner
 
 on:
   push:
     branches:
-      - main # Modify this to match your branch name
+      - main
 
 jobs:
-  postman_collection:
-    name: Run Postman Collection
+  collection_1:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Install Node.js and npm
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16' # Change this to your preferred Node.js version
 
       - name: Install Newman
         run: npm install -g newman
 
-      - name: Run Postman Collection
-        run: newman run Mocking with fruits.postman_collection.json Functional Testing and Automation.postman_collection.json
+      - name: Run Collection 1
+        run: newman run "Mocking with fruits.postman_collection.json"
+
+  collection_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Collection 2
+        run: newman run "Functional Testing and Automation.postman_collection.json"
+
+  # Add more jobs for additional collections as needed
