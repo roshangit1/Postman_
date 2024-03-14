@@ -1,4 +1,4 @@
-name: Postman Collection Runner
+name: Postman Collection Runner -On every Push
 
 on:
   push:
