@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "4c467eac-fa5b-4773-bae2-f4643fd1fb25",
+		"name": "Data-Driven Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12726914"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData=pm.response.json()\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.ok;\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+							"});\r",
+							"pm.test(\"Get total pages\", function () {\r",
+							"    pm.expect(jsonData.total_pages).to.be.eql(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/users?page=2",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://reqres.in/api/users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches id string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches name string\", function () {\r",
+							"   \r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches job string\", function () {\r",
+							"   \r",
+							"    pm.expect(pm.response.text()).to.include(\"job\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"//tests[\"Verify Name\"]= responseBody.has(data.Name)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "reqres.in"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en,en-US;q=0.9,fr-CA;q=0.8,fr;q=0.7"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "__stripe_mid=610f5504-a96c-4c45-ba1f-55f18662380ddbc1ef; _ga_CESXN06JTW=GS1.1.1707764143.2.0.1707764143.0.0.0; _ga=GA1.2.1623306558.1707521361; _gid=GA1.2.578376885.1707764144; _gat=1; _gat_gtag_UA_174008107_1=1; _ga_WSM10MMEKC=GS1.2.1707764144.2.0.1707764144.0.0.0; __stripe_sid=c673bba6-8633-4c4e-874b-121da12fa351948b44"
+					},
+					{
+						"key": "origin",
+						"value": "https://reqres.in"
+					},
+					{
+						"key": "referer",
+						"value": "https://reqres.in/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{Name}}\",\r\n    \"job\": \"{{Job}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://reqres.in",
+			"type": "string"
+		}
+	]
+}
