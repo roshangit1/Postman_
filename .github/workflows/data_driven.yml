@@ -11,10 +11,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Postman
-        run: npm install -g postman
+      - name: Install Newman
+        run: npm install -g newman
 
       - name: Run Collection 1
-        run: postman collection run 12726914-4c467eac-fa5b-4773-bae2-f4643fd1fb25
-
+        run: newman run "Mocking with fruits.postman_collection.json" 
   # Add more jobs for additional collections as needed
