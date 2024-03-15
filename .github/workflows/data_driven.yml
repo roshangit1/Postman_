@@ -1,19 +1,17 @@
-name: Data Driven Collection Run
+name: Data Driven Runs using Postman CLI
 
-on:
-  schedule:
-    - cron: '0/5 * * * *'  # Schedule to run daily at midnight (UTC)
+on: push
 
 jobs:
-  collection_1:
+  automated-api-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Newman
-        run: npm install -g newman
-
-      - name: Run Collection 1
-        run: newman run "Data-Driven Requests.postman_collection.json" -d "demodata_2.csv"
-  # Add more jobs for additional collections as needed
+      - uses: actions/checkout@v3
+      - name: Install Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run API tests
+        run: |
+          postman collection run "12726914-4c467eac-fa5b-4773-bae2-f4643fd1fb25"
