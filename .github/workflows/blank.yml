@@ -1,0 +1,20 @@
+name: Scheduled Postman Collection Run
+
+on:
+  schedule:
+    - cron: '0/10 * * * *'  # Schedule to run daily at midnight (UTC)
+
+jobs:
+  collection_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Postman
+        run: npm install -g postman
+
+      - name: Run Collection 1
+        run: postman collection run 12726914-4c467eac-fa5b-4773-bae2-f4643fd1fb25
+
+  # Add more jobs for additional collections as needed
