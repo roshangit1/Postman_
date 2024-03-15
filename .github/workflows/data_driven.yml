@@ -1,8 +1,8 @@
-name: Scheduled Postman Collection Run
+name: Data Driven Collection Run
 
 on:
   schedule:
-    - cron: '0/10 * * * *'  # Schedule to run daily at midnight (UTC)
+    - cron: '0/5 * * * *'  # Schedule to run daily at midnight (UTC)
 
 jobs:
   collection_1:
