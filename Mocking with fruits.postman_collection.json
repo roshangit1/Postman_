@@ -16,8 +16,8 @@
 							"pm.test(\"Response time is less than 1000ms\", function () {\r",
 							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
 							"});\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
 							"});"
 						],
 						"type": "text/javascript"
