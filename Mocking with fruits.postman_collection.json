@@ -16,11 +16,15 @@
 							"pm.test(\"Response time is less than 1000ms\", function () {\r",
 							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
 							"});\r",
-							"pm.test(\"Status code is 429\", function () {\r",
-							"    pm.response.to.have.status(429);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"apple\");\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
